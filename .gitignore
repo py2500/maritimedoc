@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# 输出和数据库
+output/
+data/
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+.DS_Store
+*.log
+
+# 环境变量
+.env
+
+# 模板文件（大文件，单独管理）
+海事申请和进出港保障方案模版/
+templates/

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  maritime-doc-generator:
+    build: .
+    container_name: maritime-doc-generator
+    ports:
+      - "8000:8000"
+    volumes:
+      # 挂载模板目录（需要在宿主机上准备模板文件）
+      - ./templates:/app/templates:ro
+      # 持久化输出目录
+      - ./output:/app/output
+      # 持久化数据库文件
+      - ./data:/app/data
+    environment:
+      - TEMPLATE_DIR=/app/templates
+      - OUTPUT_DIR=/app/output
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
